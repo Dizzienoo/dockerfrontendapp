@@ -1,0 +1,11 @@
+sudo: required #to get super permissions
+services:
+  - docker # installs a copy of docker into build machine
+
+#commands before test is run
+before_install:
+  - docker build -t dockerfrontendapp/testimage -f Dockerfile.dev . #build our dev dockerfile and tag it with anything we want for reference
+
+#tell travis how to run the test suite
+script:
+  - docker run dockerfrontendapp/testimage npm run test -- --coverage # run the test command in the new app, send the -- -- coverage command to exit the test suite once complete
