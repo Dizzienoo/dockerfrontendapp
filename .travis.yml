@@ -8,4 +8,4 @@ before_install:
 
 #tell travis how to run the test suite
 script:
-  - docker run dockerfrontendapp/testimage npm run test -- --coverage # run the test command in the new app, send the -- -- coverage command to exit the test suite once complete
+  - docker run  -e CI=true dockerfrontendapp/testimage npm run test -- --coverage # run the test command in the new app, send the -- -- coverage command to exit the test suite once complete
